@@ -26,7 +26,7 @@
 ### Start your server
 In your downloaded sample project folder, run:
 ```
-AUDIENCE=<your API identifier> \
+set AUDIENCE=<your API identifier> \
 ISSUER=https://<your client domain> \
 SIGNING_SECRET=<your API signing secret> \
 ruby lib/server_hsa256.rb
