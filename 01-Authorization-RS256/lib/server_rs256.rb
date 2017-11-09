@@ -29,6 +29,8 @@ def scope_included
 end
 
 configure do
+  set :bind, '0.0.0.0'
+  set :port, '3010'
   set :auth0_domain,  ENV['AUTH0_DOMAIN'] || 'testdomain'
   set :auth0_api_audience,  ENV['AUTH0_API_AUDIENCE'] || 'testissuer'
 end
