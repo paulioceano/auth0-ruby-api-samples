@@ -24,6 +24,13 @@ Once you've set these environment variables, run `bundle install` and then `ruby
 
 Shut it down manually with Ctrl-C.
 
+## Running the Sample With Docker
+
+In order to run the example with docker you need to have `docker` installed.
+
+You also need to set the client credentials as explained [previously](#running-the-sample-application).
+
+Execute in command line `sh exec.sh` to run the Docker in Linux, or `.\exec.ps1` to run the Docker in Windows.
 
 ## What is Auth0?
 
