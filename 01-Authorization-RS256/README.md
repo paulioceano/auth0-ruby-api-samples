@@ -1,6 +1,6 @@
 # Ruby Authorization for RS256-Signed Tokens
 
-This sample demonstrates how to protect endpoints in an Ruby API by verifing an incoming JWT access token signed by Auth0. The token must be signed with the RS256 algorithm and must be verified against your Auth0 JSON Web Key Set.
+This sample demonstrates how to protect endpoints in an Ruby API by verifying an incoming JWT access token signed by Auth0. The token must be signed with the RS256 algorithm and must be verified against your Auth0 JSON Web Key Set.
 
 ## Getting Started
 
@@ -13,7 +13,7 @@ In order to run the example you need to have Ruby installed.
 
 You also need to set the Domain and API Audience for your Rails API as environment variables with the following names respectively: `AUTH0_DOMAIN` and `AUTH0_API_AUDIENCE`.
 
-Set the environment variables in `.env` to match those in your Auth0 API.
+Rename `.env.example` to `.env` and set the environment variables to match those in your Auth0 API.
 
 ````bash
 # .env file
@@ -54,7 +54,7 @@ If you have found a bug or if you have a feature request, please report them at 
 
 ## Author
 
-[Auth0](auth0.com)
+[Auth0](https://auth0.com)
 
 ## License
 
