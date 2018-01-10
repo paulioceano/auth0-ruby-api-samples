@@ -6,8 +6,8 @@ require 'jwt'
 require_relative 'jwt/json_web_token'
 
 SCOPES = {
-  '/restricted_resource' => ['read:messages'],
-  '/another_resource'    => ['some:scope', 'some:other_scope']
+    '/api/private'    => nil,
+    '/api/private-scoped' => ['read:messages']
 }
 
 def authenticate!
@@ -23,9 +23,13 @@ rescue JWT::DecodeError => e
 end
 
 def scope_included
-  # The intersection of the scopes included in the given JWT and the ones in the SCOPES hash needed to access
-  # the PATH_INFO, should contain at least one element
-  (String(@auth_payload['scope']).split(' ') & (SCOPES[request.env['PATH_INFO']])).any?
+  if SCOPES[request.env['PATH_INFO']] == nil
+    true
+  else
+    # The intersection of the scopes included in the given JWT and the ones in the SCOPES hash needed to access
+    # the PATH_INFO, should contain at least one element
+    (String(@auth_payload['scope']).split(' ') & (SCOPES[request.env['PATH_INFO']])).any?
+  end
 end
 
 configure do
@@ -35,10 +39,16 @@ configure do
   set :auth0_api_audience,  ENV['AUTH0_API_AUDIENCE'] || 'testissuer'
 end
 
-before do
-  authenticate!
+get '/api/public' do
+  json( message: 'All good. You don\'t need to be authenticated to call this.' )
 end
 
-get '/restricted_resource' do
-  json( message: 'Access Granted', allowed_scopes: String(@auth_payload['scope']).split(' ') )
+get '/api/private' do
+  authenticate!
+  json( message: 'All good. You only get this message if you\'re authenticated.' )
+end
+
+get '/api/private-scoped' do
+  authenticate!
+  json( message: 'All good. You only get this message if you\'re authenticated and have a scope of read:messages.' )
 end

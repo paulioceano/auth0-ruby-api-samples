@@ -9,6 +9,7 @@ If you haven't already done so, [sign up](https://auth0.com) for your free Auth0
 Clone the repo or download it from the Ruby API quickstart page in Auth0's documentation.
 
 ## Running the Sample Application
+
 In order to run the example you need to have Ruby installed.
 
 You also need to set the Domain and API Audience for your Rails API as environment variables with the following names respectively: `AUTH0_DOMAIN` and `AUTH0_API_AUDIENCE`.
