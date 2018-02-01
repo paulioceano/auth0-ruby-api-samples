@@ -40,15 +40,15 @@ configure do
 end
 
 get '/api/public' do
-  json( message: 'All good. You don\'t need to be authenticated to call this.' )
+  json( message: 'Hello from a public endpoint! You don\'t need to be authenticated to see this.' )
 end
 
 get '/api/private' do
   authenticate!
-  json( message: 'All good. You only get this message if you\'re authenticated.' )
+  json( message: 'Hello from a private endpoint! You need to be authenticated to see this.' )
 end
 
 get '/api/private-scoped' do
   authenticate!
-  json( message: 'All good. You only get this message if you\'re authenticated and have a scope of read:messages.' )
+  json( message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.' )
 end
