@@ -4,6 +4,9 @@ require 'sinatra'
 require 'sinatra/json'
 require 'jwt'
 require_relative 'jwt/json_web_token'
+require 'dotenv'
+
+Dotenv.load
 
 SCOPES = {
     '/api/private'    => nil,
