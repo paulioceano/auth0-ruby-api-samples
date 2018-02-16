@@ -5,6 +5,7 @@ GEM
     backports (3.6.8)
     builder (3.2.2)
     coderay (1.1.1)
+    dotenv (2.2.1)
     ffi (1.9.14)
     formatador (0.2.5)
     guard (2.14.0)
@@ -73,6 +74,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   guard
   guard-minitest
   jwt
