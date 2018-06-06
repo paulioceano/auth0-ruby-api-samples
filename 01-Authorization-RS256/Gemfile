@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'sinatra-contrib' # For sinatra/json
 gem 'jwt'
 gem 'dotenv'
+gem 'rack-cors', require: 'rack/cors'
 
 group :test do
   gem 'minitest'

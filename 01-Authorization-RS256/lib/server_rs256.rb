@@ -5,6 +5,7 @@ require 'sinatra/json'
 require 'jwt'
 require_relative 'jwt/json_web_token'
 require 'dotenv'
+require 'rack/cors'
 
 Dotenv.load
 
@@ -38,8 +39,18 @@ end
 configure do
   set :bind, '0.0.0.0'
   set :port, '3010'
-  set :auth0_domain,  ENV['AUTH0_DOMAIN'] || 'testdomain'
-  set :auth0_api_audience,  ENV['AUTH0_API_AUDIENCE'] || 'testissuer'
+  set :auth0_domain, ENV['AUTH0_DOMAIN'] || 'testdomain'
+  set :auth0_api_audience, ENV['AUTH0_API_AUDIENCE'] || 'testissuer'
+end
+
+use Rack::Cors do
+  allow do
+    origins 'http://localhost:3000'
+    resource '*',
+             headers: 'Authorization',
+             methods: [:get, :post, :options],
+             credentials: true
+  end
 end
 
 get '/api/public' do
